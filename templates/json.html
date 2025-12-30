@@ -19,7 +19,23 @@
     <div class="container mt-3">
         <h3>JSON 練習</h3>
         <div id="userList">
+            <table id="userList" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>姓名</th>
+                        <th>電子郵件</th>
+                        <th>年紀</th>
+                    </tr>
+                </thead>
+            </table>
 
+
+
+            <ul id="ul1">
+                <li></li>
+                <li></li>
+            </ul>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
@@ -33,8 +49,39 @@
                 { "id": 3, "UserName": "Charlie", "UserEmail": "charlie@company.com", "age": 22 }]
 
             //如何讀取 users JSON 中的資料
-            //如何將讀出的資料顯示在網頁上
+            //array 物件提供的方法 forEach
+            const theUl = document.querySelector('#ul1')
+            let lis = '';
 
+            users.forEach((user, index, array) => {
+                // console.log(user);
+                // console.log(user.id);
+                // console.log(user.UserName);
+                // console.log(user.UserEmail);
+                // console.log(user.age);
+
+                lis += `<li>${user.UserName}</li>`;
+
+                //解構賦值
+                const { id, UserName, UserEmail, age } = user;
+                tds += `
+                    <tr>
+                        <td>${id}</td>  
+                        <td>${UserName}</td>  
+                        <td>${UserEmail}</td>  
+                        <td>${age}</td>  
+                    
+                    </tr> 
+                          `
+
+            })
+
+
+
+            //如何將讀出的資料顯示在網頁上
+            theUl.innerHTML = lis;
+            const
+                tb.innerHTML = tds;
 
 
         </script>
