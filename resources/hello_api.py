@@ -4,16 +4,19 @@ import time, os
 class HelloWorld(Resource):
     def get(self):
         # time.sleep(5)  # 模擬延遲
+        time.sleep(5)  # 模擬延遲
         return {'message':'Hello, RESTful API!!'},200
     
 class TextResource(Resource):
     def get(self):
-        return "RESTful API"
+        response = make_response("RESTful API", 200)
+        response.mimetype = "text/plain"
+        return response
     
 class ImageResource(Resource):
     def get(self):
         # 取得檔案的路徑
-        img_path = os.path.join('static', 'avatars', 'cat1.jpg')
+        img_path = os.path.join('static', 'avatars', 'cat4.jpg')
 
         if not os.path.exists(img_path):
             abort(404, message="圖片檔案不存在")
