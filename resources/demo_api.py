@@ -3,6 +3,8 @@ from flask_restful import Resource
 import os, uuid
 from werkzeug.utils import secure_filename
 
+
+
 class QueryStringDemo(Resource):
     def get(self):
         # 使用 request.args 取得資料
